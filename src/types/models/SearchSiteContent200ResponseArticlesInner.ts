@@ -12,7 +12,6 @@
 
 export class SearchSiteContent200ResponseArticlesInner {
   'image': string;
-  'link': string;
   'name': string;
 
   static readonly discriminator: string | undefined = undefined;

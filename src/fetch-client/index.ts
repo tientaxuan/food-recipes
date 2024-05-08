@@ -44,7 +44,7 @@ class FetchClient {
       this.url({
         path: 'recipes/random',
         params: {
-          number: 9,
+          number: 10,
         },
       }),
     );

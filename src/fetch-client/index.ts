@@ -37,7 +37,7 @@ class FetchClient {
   static url({ path, params = {} }: UrlArgs): string {
     const bufferPath = path.startsWith('/') ? path : `/${path}`;
 
-    const bufferHost = this.config.host.endsWith('/')
+    const bufferHost = this.config?.host?.endsWith('/')
       ? this.config.host.slice(0, -1)
       : this.config.host;
 

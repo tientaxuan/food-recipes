@@ -1,13 +1,19 @@
 import './globals.css';
 
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Lato } from 'next/font/google';
+import { Provider as ReactWrapBalancerProvider } from 'react-wrap-balancer';
 
 import { ThemeProvider } from '@/components/theme-provider';
 import { Toaster } from '@/components/ui/sonner';
 import { cn } from '@/lib/utils';
 
-const inter = Inter({ subsets: ['latin'] });
+const lato = Lato({
+  subsets: ['latin'],
+  weight: ['100', '300', '400', '700', '900'],
+  style: ['italic', 'italic'],
+  preload: true,
+});
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -21,16 +27,21 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={cn(inter.className)} suppressHydrationWarning={true}>
-        <main className="mx-auto max-w-[1400px] bg-amber-100">
+      <body
+        className={cn(lato.className, 'bg-slate-50')}
+        suppressHydrationWarning={true}
+      >
+        <main className="mx-auto max-w-[1400px]">
           <ThemeProvider
             attribute="class"
             defaultTheme="system"
             disableTransitionOnChange
             enableSystem
           >
-            {children}
-            <Toaster />
+            <ReactWrapBalancerProvider>
+              {children}
+              <Toaster />
+            </ReactWrapBalancerProvider>
           </ThemeProvider>
         </main>
       </body>

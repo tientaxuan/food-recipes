@@ -74,3 +74,13 @@
     @apply bg-background text-foreground;
   }
 }
+
+@layer base {
+  :root {
+    --image-overlay: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5));
+  }
+
+  .dark {
+    --image-overlay: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5));
+  }
+}

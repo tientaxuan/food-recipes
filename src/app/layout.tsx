@@ -4,6 +4,8 @@ import type { Metadata } from 'next';
 import { Lato } from 'next/font/google';
 import { Provider as ReactWrapBalancerProvider } from 'react-wrap-balancer';
 
+import CategoriesMenu from '@/components/pages/categories-menu';
+import SearchBar from '@/components/pages/search-bar';
 import { ThemeProvider } from '@/components/theme-provider';
 import { Toaster } from '@/components/ui/sonner';
 import { cn } from '@/lib/utils';
@@ -31,19 +33,21 @@ export default function RootLayout({
         className={cn(lato.className, 'bg-slate-50')}
         suppressHydrationWarning={true}
       >
-        <main className="mx-auto max-w-[1400px]">
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            disableTransitionOnChange
-            enableSystem
-          >
-            <ReactWrapBalancerProvider>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          disableTransitionOnChange
+          enableSystem
+        >
+          <ReactWrapBalancerProvider>
+            <div className="mx-auto max-w-[1400px]">
+              <SearchBar className="my-5" />
+              <CategoriesMenu />
               {children}
               <Toaster />
-            </ReactWrapBalancerProvider>
-          </ThemeProvider>
-        </main>
+            </div>
+          </ReactWrapBalancerProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

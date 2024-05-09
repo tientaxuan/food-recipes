@@ -2,6 +2,7 @@
   "name": "food-recipes",
   "packageManager": "yarn@4.2.1",
   "dependencies": {
+    "@mantine/hooks": "^7.9.1",
     "@radix-ui/react-aspect-ratio": "^1.0.3",
     "@radix-ui/react-avatar": "^1.0.4",
     "@radix-ui/react-dialog": "^1.0.5",
@@ -17,10 +18,12 @@
     "next-themes": "^0.3.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-icons": "^5.2.1",
     "react-wrap-balancer": "^1.1.0",
     "sonner": "^1.4.41",
     "tailwind-merge": "^2.3.0",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "usehooks-ts": "^3.1.0"
   },
   "scripts": {
     "dev": "next dev",

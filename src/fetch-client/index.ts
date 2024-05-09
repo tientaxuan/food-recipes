@@ -35,18 +35,21 @@ class FetchClient {
   constructor() {}
 
   static url({ path, params = {} }: UrlArgs): string {
-    const bufferPath = path.startsWith('/') ? path : `/${path}`;
+    if (this.config.host && this.config.apiKey) {
+      const bufferPath = path.startsWith('/') ? path : `/${path}`;
 
-    const bufferHost = this.config?.host?.endsWith('/')
-      ? this.config.host.slice(0, -1)
-      : this.config.host;
+      const bufferHost = this.config?.host?.endsWith('/')
+        ? this.config.host.slice(0, -1)
+        : this.config.host;
 
-    const search = `?${queryString.stringify({
-      ...params,
-      apiKey: this.config.apiKey,
-    })}`;
+      const search = `?${queryString.stringify({
+        ...params,
+        apiKey: this.config.apiKey,
+      })}`;
 
-    return bufferHost + bufferPath + search;
+      return bufferHost + bufferPath + search;
+    }
+    return '';
   }
 
   static async getRecipe({

@@ -1,5 +1,4 @@
-import AppCarousel from '@/components/pages/app-carousel';
-import ClientLog from '@/components/pages/client-log';
+import CarouselRecipes from '@/components/pages/carousel-recipes';
 import FetchClient from '@/fetch-client';
 
 export default async function Home() {
@@ -17,24 +16,22 @@ export default async function Home() {
   });
 
   return (
-    <main>
-      <div className="space-y-10">
+    <main className="mg:mt-7 mt-5 lg:mt-8">
+      <div className="space-y-4 lg:space-y-10">
         <section>
-          <AppCarousel
+          <CarouselRecipes
             recipes={Array.from(beefAndMilkPicks.recipes)}
             title="Our Beef and Milk Picks"
           />
         </section>
 
         <section>
-          <AppCarousel
+          <CarouselRecipes
             recipes={Array.from(popularPicks.recipes)}
             title="Popular Picks"
           />
         </section>
       </div>
-
-      <ClientLog data={beefAndMilkPicks.recipes} />
     </main>
   );
 }

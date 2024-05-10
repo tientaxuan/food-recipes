@@ -1,8 +1,13 @@
 'use server';
 
-import queryString from 'querystring';
+import queryString from 'query-string';
 
-import type { GetRandomRecipes200Response } from '@/types/models/GetRandomRecipes200Response';
+import type {
+  GetRandomRecipes200Args,
+  GetRandomRecipes200Response,
+  SearchRecipes200Args,
+  SearchRecipes200Response,
+} from './types';
 
 interface ClientConfig {
   host: string;
@@ -13,16 +18,6 @@ interface UrlArgs {
   path: string;
   params?: {
     [key: string]: string | number | boolean;
-  };
-}
-
-interface GetRandomRecipes200Args {
-  params: {
-    limitLicense?: boolean;
-    includeNutrition?: boolean;
-    includeTags?: string[];
-    excludeTags?: string[];
-    number?: number;
   };
 }
 
@@ -42,10 +37,18 @@ class FetchClient {
         ? this.config.host.slice(0, -1)
         : this.config.host;
 
-      const search = `?${queryString.stringify({
-        ...params,
-        apiKey: this.config.apiKey,
-      })}`;
+      const search = `?${queryString.stringify(
+        {
+          ...params,
+          apiKey: this.config.apiKey,
+        },
+        {
+          skipNull: true,
+          skipEmptyString: true,
+          encode: true,
+          strict: true,
+        },
+      )}`;
 
       return bufferHost + bufferPath + search;
     }
@@ -65,6 +68,23 @@ class FetchClient {
           'exclude-tags': params.excludeTags?.join(',') ?? '',
           number: params.number ?? 1,
         },
+      }),
+    );
+
+    if (!res.ok) {
+      throw new Error('Failed to fetch data');
+    }
+
+    return res.json();
+  }
+
+  static async searchRecipes({
+    params,
+  }: SearchRecipes200Args): Promise<SearchRecipes200Response> {
+    const res = await fetch(
+      this.url({
+        path: 'recipes/complexSearch',
+        params: params,
       }),
     );
 

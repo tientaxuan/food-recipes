@@ -19,10 +19,10 @@ interface AppCarouselProps {
   title?: string;
 }
 
-const AppCarousel = ({ recipes, title }: AppCarouselProps) => {
+const CarouselRecipes = ({ recipes, title }: AppCarouselProps) => {
   return (
     <div>
-      {title && <h3 className="mb-3 text-xl">{title}</h3>}
+      {title && <h3 className="mb-3 text-lg lg:text-xl">{title}</h3>}
 
       <Carousel
         opts={{
@@ -30,9 +30,15 @@ const AppCarousel = ({ recipes, title }: AppCarouselProps) => {
           dragFree: true,
         }}
       >
-        <CarouselContent className={cn('-ml-10')}>
+        <CarouselContent className={cn('lg:-ml-10 -ml-5')}>
           {Array.from(recipes).map((recipe) => (
-            <CarouselItem className={cn('basis-1/4', 'pl-10')} key={recipe.id}>
+            <CarouselItem
+              className={cn(
+                'basis-[66%] sm:basis-[55%] lg:basis-[30%] xl:basis-[27%]',
+                'pl-5 lg:pl-10',
+              )}
+              key={recipe.id}
+            >
               <div
                 className={cn(
                   'relative cursor-pointer select-none',
@@ -53,7 +59,7 @@ const AppCarousel = ({ recipes, title }: AppCarouselProps) => {
 
                 <div className="overlay absolute inset-0 z-10 bg-image-overlay transition-opacity duration-150" />
 
-                <Balancer className="absolute bottom-5 left-1/2 z-30 -translate-x-1/2 text-lg font-normal text-white">
+                <Balancer className="absolute bottom-2 left-1/2 z-30 -translate-x-1/2 text-sm font-normal text-white md:bottom-4 md:text-[16px] lg:bottom-5 lg:text-lg">
                   {recipe.title}
                 </Balancer>
               </div>
@@ -65,4 +71,4 @@ const AppCarousel = ({ recipes, title }: AppCarouselProps) => {
   );
 };
 
-export default AppCarousel;
+export default CarouselRecipes;

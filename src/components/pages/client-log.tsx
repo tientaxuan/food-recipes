@@ -2,11 +2,11 @@
 /* eslint-disable no-console */
 'use client';
 
-export const log = ([...args]) => {
+export function log(...args: any[]) {
   if (process.env.NODE_ENV === 'development') {
-    return console.log(args);
+    return console.log(...args);
   }
-};
+}
 
 interface Props {
   data: any;
@@ -14,7 +14,7 @@ interface Props {
 
 const ClientLog = (props: Props) => {
   log(props?.data);
-  return <></>;
+  return null;
 };
 
 export default ClientLog;

@@ -2,10 +2,12 @@
   "name": "food-recipes",
   "packageManager": "yarn@4.2.1",
   "dependencies": {
+    "@hookform/resolvers": "^3.3.4",
     "@mantine/hooks": "^7.9.1",
     "@radix-ui/react-aspect-ratio": "^1.0.3",
     "@radix-ui/react-avatar": "^1.0.4",
     "@radix-ui/react-dialog": "^1.0.5",
+    "@radix-ui/react-label": "^2.0.2",
     "@radix-ui/react-popover": "^1.0.7",
     "@radix-ui/react-scroll-area": "^1.0.5",
     "@radix-ui/react-separator": "^1.0.3",
@@ -16,14 +18,18 @@
     "lucide-react": "^0.378.0",
     "next": "^14.2.3",
     "next-themes": "^0.3.0",
+    "query-string": "^9.0.0",
+    "radash": "^12.1.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-hook-form": "^7.51.4",
     "react-icons": "^5.2.1",
     "react-wrap-balancer": "^1.1.0",
     "sonner": "^1.4.41",
     "tailwind-merge": "^2.3.0",
     "tailwindcss-animate": "^1.0.7",
-    "usehooks-ts": "^3.1.0"
+    "usehooks-ts": "^3.1.0",
+    "zod": "^3.23.8"
   },
   "scripts": {
     "dev": "next dev",

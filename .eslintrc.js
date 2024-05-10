@@ -1,6 +1,7 @@
 module.exports = {
   globals: {
     React: true,
+    Window: true,
   },
   extends: [
     'next/core-web-vitals',

@@ -26,7 +26,7 @@ const GridRecipes = ({ searchResults }: GridRecipesProps) => {
           ? recipes.map((recipe) => (
               <Link
                 className="selection-none relative inline-block cursor-pointer overflow-hidden rounded-md [&:hover_.overlay]:opacity-30"
-                href={'/'}
+                href={`/recipe/${recipe.id}`}
                 key={recipe.id}
               >
                 <AspectRatio ratio={312 / 231}>

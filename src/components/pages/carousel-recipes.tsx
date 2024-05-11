@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import Balancer from 'react-wrap-balancer';
 
 import {
@@ -39,11 +40,12 @@ const CarouselRecipes = ({ recipes, title }: AppCarouselProps) => {
               )}
               key={recipe.id}
             >
-              <div
+              <Link
                 className={cn(
-                  'relative cursor-pointer select-none',
+                  'relative cursor-pointer select-none block w-full',
                   '[&:hover_.overlay]:opacity-30 overflow-hidden rounded-lg',
                 )}
+                href={`/recipe/${recipe.id}`}
               >
                 <AspectRatio className="z-10" ratio={556 / 370}>
                   <Avatar className="size-full rounded-none">
@@ -62,7 +64,7 @@ const CarouselRecipes = ({ recipes, title }: AppCarouselProps) => {
                 <Balancer className="absolute bottom-2 left-1/2 z-30 -translate-x-1/2 text-sm font-normal text-white md:bottom-4 md:text-[16px] lg:bottom-5 lg:text-lg">
                   {recipe.title}
                 </Balancer>
-              </div>
+              </Link>
             </CarouselItem>
           ))}
         </CarouselContent>

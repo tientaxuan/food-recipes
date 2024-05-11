@@ -6,6 +6,8 @@ import { paginationConfig } from './pagination-config';
 import type {
   GetRandomRecipes200Args,
   GetRandomRecipes200Response,
+  GetRecipeInformation200Args,
+  GetRecipeInformation200Response,
   SearchRecipes200Args,
   SearchRecipes200Response,
 } from './types';
@@ -82,7 +84,7 @@ class FetchClient {
   static async searchRecipes({
     params,
   }: {
-    params: SearchRecipes200Args['params'] & {
+    params: Omit<SearchRecipes200Args['params'], 'offset'> & {
       page?: number;
     };
   }): Promise<SearchRecipes200Response> {
@@ -96,6 +98,24 @@ class FetchClient {
             (Number(params?.page ?? 1) - 1 ?? 0) *
             paginationConfig.numberPerPage,
         },
+      }),
+    );
+
+    if (!res.ok) {
+      throw new Error('Failed to fetch data');
+    }
+
+    return res.json();
+  }
+
+  static async getRecipeInfo({
+    params,
+  }: GetRecipeInformation200Args): Promise<GetRecipeInformation200Response> {
+    const { id, ...remain } = params;
+    const res = await fetch(
+      this.url({
+        path: `recipes/${id}/information`,
+        params: remain,
       }),
     );
 

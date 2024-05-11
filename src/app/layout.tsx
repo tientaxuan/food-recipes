@@ -7,6 +7,7 @@ import { Suspense } from 'react';
 import { Provider as ReactWrapBalancerProvider } from 'react-wrap-balancer';
 
 import CategoriesMenu from '@/components/pages/categories-menu';
+import Logo from '@/components/pages/logo';
 import SearchBar from '@/components/pages/search-bar';
 import { ThemeProvider } from '@/components/theme-provider';
 import { Toaster } from '@/components/ui/sonner';
@@ -49,6 +50,7 @@ export default function RootLayout({
         >
           <ReactWrapBalancerProvider>
             <div className="mx-auto max-w-[1400px]">
+              <Logo />
               <Suspense>
                 <SearchBar className="my-5" />
               </Suspense>

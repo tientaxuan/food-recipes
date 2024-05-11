@@ -1,8 +1,13 @@
 import { SearchRecipes200Response } from '@/types/models/SearchRecipes200Response';
 
 import { GetRandomRecipes200Response } from './../types/models/GetRandomRecipes200Response';
+import { GetRecipeInformation200Response } from './../types/models/GetRecipeInformation200Response';
 
-export type { GetRandomRecipes200Response, SearchRecipes200Response };
+export type {
+  GetRandomRecipes200Response,
+  GetRecipeInformation200Response,
+  SearchRecipes200Response,
+};
 
 export interface GetRandomRecipes200Args {
   params: Partial<{
@@ -221,3 +226,12 @@ export const pickingParams = [
   //custom
   'page',
 ];
+
+export interface GetRecipeInformation200Args {
+  params: {
+    id: number | string;
+    includeNutrition?: boolean;
+    addWinePairing?: boolean;
+    addTasteData?: boolean;
+  };
+}

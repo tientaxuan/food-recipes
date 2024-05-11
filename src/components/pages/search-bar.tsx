@@ -32,7 +32,7 @@ const SearchBar = ({ className, ...props }: SearchBarProps) => {
 
   function onSubmit(values: z.infer<typeof formSchema>) {
     router.push(
-      `/search?${queryString.stringify({ ...queryString.parse(searchParams.toString()), query: values.search })}`,
+      `/search?${queryString.stringify({ ...queryString.parse(searchParams.toString()), query: values.search, page: 1 })}`,
     );
   }
 

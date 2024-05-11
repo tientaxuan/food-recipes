@@ -215,7 +215,9 @@ export const pickingParams = [
   'maxSugar',
   'minZinc',
   'maxZinc',
-  'offset',
+  // 'offset',
   'number',
   'limitLicense',
+  //custom
+  'page',
 ];

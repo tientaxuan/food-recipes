@@ -2,6 +2,7 @@
 
 import queryString from 'query-string';
 
+import { paginationConfig } from './pagination-config';
 import type {
   GetRandomRecipes200Args,
   GetRandomRecipes200Response,
@@ -80,11 +81,21 @@ class FetchClient {
 
   static async searchRecipes({
     params,
-  }: SearchRecipes200Args): Promise<SearchRecipes200Response> {
+  }: {
+    params: SearchRecipes200Args['params'] & {
+      page?: number;
+    };
+  }): Promise<SearchRecipes200Response> {
     const res = await fetch(
       this.url({
         path: 'recipes/complexSearch',
-        params: params,
+        params: {
+          ...params,
+          number: paginationConfig.numberPerPage,
+          offset:
+            (Number(params?.page ?? 1) - 1 ?? 0) *
+            paginationConfig.numberPerPage,
+        },
       }),
     );
 
